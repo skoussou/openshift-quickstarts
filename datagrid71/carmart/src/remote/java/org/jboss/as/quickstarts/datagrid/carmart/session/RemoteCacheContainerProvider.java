@@ -57,12 +57,12 @@ public class RemoteCacheContainerProvider extends CacheContainerProvider {
                  .host(jdgProperty(DATAGRID_HOST))
                  .port(Integer.parseInt(jdgProperty(HOTROD_PORT)));
 
-            builder.security() 
-    		.authentication()
-    		.enable()
-    		.serverName("jdg-server")
-    		.saslMechanism("DIGEST-MD5")
-    		.callbackHandler(new TestCallbackHandler(jdgProperty("datagrid.username"), "ApplicationRealm", jdgProperty("datagrid.password").toCharArray()));
+     //       builder.security() 
+    	//	.authentication()
+    	//	.enable()
+    	//	.serverName("jdg-server")
+    	//	.saslMechanism("DIGEST-MD5")
+    	//	.callbackHandler(new TestCallbackHandler(jdgProperty("datagrid.username"), "ApplicationRealm", jdgProperty("datagrid.password").toCharArray()));
 
             manager = new RemoteCacheManager(builder.build());
             log.info("=== Using RemoteCacheManager (Hot Rod) ===");
@@ -70,7 +70,7 @@ public class RemoteCacheContainerProvider extends CacheContainerProvider {
         return manager;
     }
 
-    public static class TestCallbackHandler implements CallbackHandler {
+/*    public static class TestCallbackHandler implements CallbackHandler {
       final private String username;
       final private char[] password;
       final private String realm;
@@ -103,6 +103,7 @@ public class RemoteCacheContainerProvider extends CacheContainerProvider {
          }
       }
    }
+*/
 
     @PreDestroy
     public void cleanUp() {
